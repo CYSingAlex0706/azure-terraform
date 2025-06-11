@@ -4,7 +4,7 @@ resource "azurerm_resource_group" "rg" {
 }
 
 resource "azurerm_key_vault" "example" {
-  name                        = "example-kv"
+  name                        = "alex-chui-kv"
   location                    = azurerm_resource_group.rg.location
   resource_group_name         = azurerm_resource_group.rg.name
   tenant_id                   = var.ARM_TENANT_ID
