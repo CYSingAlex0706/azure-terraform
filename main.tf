@@ -10,7 +10,7 @@ resource "azurerm_key_vault" "example" {
   tenant_id                   = var.ARM_TENANT_ID
   sku_name                    = "standard"
   purge_protection_enabled    = false
-  enable_rbac_authorization   = false
+  enable_rbac_authorization   = true
 
 }
 
