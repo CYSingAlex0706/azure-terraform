@@ -6,10 +6,10 @@ variable "TFC_AZURE_PROVIDER_AUTH" {
   type = string
 }
 
-variable "tenant_id" {
+variable "ARM_TENANT_ID" {
   type = string
 }
 
-variable "subscription_id" {
+variable "ARM_SUBSCRIPTION_ID" {
   type = string
 }
