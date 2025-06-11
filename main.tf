@@ -9,7 +9,6 @@ resource "azurerm_key_vault" "example" {
   resource_group_name         = azurerm_resource_group.rg.name
   tenant_id                   = var.ARM_TENANT_ID
   sku_name                    = "standard"
-  soft_delete_enabled         = true
   purge_protection_enabled    = false
   enable_rbac_authorization   = false
 
