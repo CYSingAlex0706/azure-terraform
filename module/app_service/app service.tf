@@ -6,7 +6,7 @@ resource "azurerm_service_plan" "example" {
   sku_name            = "S1"
 
   
-  depends_on = [azurerm_resource_group.rg]
+  depends_on = [var.resource_group_name]
 
 }
 
