@@ -13,3 +13,8 @@ variable "ARM_TENANT_ID" {
 variable "ARM_SUBSCRIPTION_ID" {
   type = string
 }
+
+variable "ARM_SUBSCRIPTION_ID" {
+  type = string
+}
+
