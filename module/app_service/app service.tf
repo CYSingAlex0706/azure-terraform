@@ -4,6 +4,10 @@ resource "azurerm_service_plan" "example" {
   resource_group_name = var.resource_group_name
   os_type             = "Linux"
   sku_name            = "S1"
+
+  
+  depends_on = [azurerm_resource_group.rg]
+
 }
 
 resource "azurerm_linux_web_app" "example" {
