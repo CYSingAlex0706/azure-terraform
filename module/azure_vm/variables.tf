@@ -12,6 +12,12 @@ variable "admin_password" {
 
 variable "subnet_id" {
 }
+variable "public_ip_address_id" {
+}
+
+# variable "public_ip_address" {
+# }
+
 # variable "name" {
 #   description = "subnet name"
 #   type        = string

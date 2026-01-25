@@ -1,19 +1,17 @@
 module "azure_vnet" {
-  source              = "./module/vnet"
+  source      = "./module/vnet"
   for_each    = var.vnet_config
   vnet_config = each.value
 
   location            = var.location
-  resource_group_name = var.resource_group_name
+  resource_group_name = module.resource_group.resource_group_name
 }
 
 module "azure_subnet" {
-  source = "./module/azure_subnet"
+  source   = "./module/azure_subnet"
   for_each = var.subnet_config
-  
-  # 关键：从vnet模块获取实际VNet名称
-  vnet_name           = module.azure_vnet[each.value.vnet_key]
+  virtual_network_name           = module.azure_vnet["vpc-01"].vnet_name
   subnet_config       = each.value
   location            = var.location
-  resource_group_name = var.resource_group_name
+  resource_group_name = module.resource_group.resource_group_name
 }

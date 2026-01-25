@@ -10,7 +10,7 @@ terraform {
 # provider.tf
 provider "azurerm" {
   features {}
-  
+
   # 引用在 .tfvars 中定义的变量
   subscription_id = var.subscription_id
   tenant_id       = var.tenant_id

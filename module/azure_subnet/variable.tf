@@ -6,5 +6,5 @@ variable "location" {
 
 variable "subnet_config" {
 }
-variable "vnet_name" {
+variable "virtual_network_name" {
 }

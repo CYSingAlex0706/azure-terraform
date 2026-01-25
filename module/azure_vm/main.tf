@@ -5,8 +5,8 @@ resource "azurerm_linux_virtual_machine" "vm" {
   size                = var.vm_config.size
   admin_username = var.admin_username
   admin_password = var.admin_password
-  # disable_password_authentication = var.vm_config.disable_password_authentication
-  
+  disable_password_authentication = var.vm_config.disable_password_authentication
+
   network_interface_ids = [
     azurerm_network_interface.vm.id,
   ]
@@ -39,5 +39,6 @@ resource "azurerm_network_interface" "vm" {
     name                          = "internal"
     subnet_id                     = var.subnet_id  # 使用 subnet_id
     private_ip_address_allocation = "Dynamic"
+    public_ip_address_id          = var.public_ip_address_id
   }
 }

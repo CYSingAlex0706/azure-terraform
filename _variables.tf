@@ -46,6 +46,10 @@ variable "subnet_config" {
 }
 variable "vnet_config" {
 }
+
+variable "ip_configs" {
+}
+
 variable "admin_username" {
   sensitive = true
 }
