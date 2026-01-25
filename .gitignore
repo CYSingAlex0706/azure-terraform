@@ -1,0 +1,9 @@
+_secret.auto.tfvars
+# Local .terraform directories
+**/.terraform/*
+!.terraform/plugins/
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
