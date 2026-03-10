@@ -6,6 +6,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   admin_username = var.admin_username
   admin_password = var.admin_password
   disable_password_authentication = var.vm_config.disable_password_authentication
+  custom_data = base64encode(var.vm_config.user_data)
 
   network_interface_ids = [
     azurerm_network_interface.vm.id,

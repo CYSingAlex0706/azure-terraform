@@ -7,7 +7,7 @@ vnet_config = {
 
 subnet_config = {
   "subnet-01" = {
-    name      = "ssubnet-01"
+    name      = "subnet-01"
     cidr      = ["10.0.1.0/24"]
   }
   "subnet-02" = {

@@ -37,7 +37,8 @@ variable "client_secret" {
   sensitive   = true
 }
 
-
+variable "nsg_config" {    
+}
 
 
 variable "vm_config" {
@@ -57,5 +58,21 @@ variable "admin_password" {
   sensitive = true
 }
 
-
-
+# variable "nsg_config" {
+#   description = "Map of NSG configurations"
+#   type = map(object({
+#     name = string
+#     security_rules = list(object({
+#       name                       = string
+#       priority                   = number
+#       direction                  = string
+#       access                     = string
+#       protocol                   = string
+#       source_port_range          = string
+#       destination_port_range     = string
+#       source_address_prefix      = string
+#       destination_address_prefix = string
+#     }))
+#     tags = optional(map(string))
+#   }))
+# }

@@ -16,6 +16,34 @@ vm_config = {
       sku       = "20_04-lts"
       version   = "latest"
     }
+
+    user_data = <<-EOF
+    #!/bin/bash
+    set -e
+
+    # Update system
+    apt-get update
+    apt-get install -y openjdk-21-jdk wget
+
+    # Install Jenkins
+    mkdir -p /etc/apt/keyrings
+    wget -O /etc/apt/keyrings/jenkins-keyring.asc https://pkg.jenkins.io/debian-stable/jenkins.io-2026.key
+    echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/" | tee /etc/apt/sources.list.d/jenkins.list
+    apt-get update
+    apt-get install -y jenkins
+
+    # Start Jenkins
+    systemctl enable jenkins
+    systemctl start jenkins
+
+    # Wait and save initial password
+    sleep 30
+    echo "=== Jenkins Initial Admin Password ===" > /home/ubuntu/jenkins-info.txt
+    cat /var/lib/jenkins/secrets/initialAdminPassword >> /home/ubuntu/jenkins-info.txt
+    echo "=====================================" >> /home/ubuntu/jenkins-info.txt
+    echo "Jenkins URL: http://$(curl -s http://169.254.169.254/latest/meta-data/public-ipv4):8080" >> /home/ubuntu/jenkins-info.txt
+    EOF
+
     disable_password_authentication = false
   }
 }
