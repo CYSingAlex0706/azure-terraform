@@ -1,11 +1,3 @@
-# variable "TFC_AZURE_RUN_CLIENT_ID" {
-#   type = string
-# }
-
-# variable "TFC_AZURE_PROVIDER_AUTH" {
-#   type = string
-# }
-
 variable "subscription_id" {
   type = string
 }
@@ -37,9 +29,10 @@ variable "client_secret" {
   sensitive   = true
 }
 
-variable "nsg_config" {    
-}
-
+# variable "nsg_config" {    
+# }
+# variable "route_table_config" {    
+# }
 
 variable "vm_config" {
 }
@@ -57,22 +50,3 @@ variable "admin_username" {
 variable "admin_password" {
   sensitive = true
 }
-
-# variable "nsg_config" {
-#   description = "Map of NSG configurations"
-#   type = map(object({
-#     name = string
-#     security_rules = list(object({
-#       name                       = string
-#       priority                   = number
-#       direction                  = string
-#       access                     = string
-#       protocol                   = string
-#       source_port_range          = string
-#       destination_port_range     = string
-#       source_address_prefix      = string
-#       destination_address_prefix = string
-#     }))
-#     tags = optional(map(string))
-#   }))
-# }
