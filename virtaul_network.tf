@@ -1,5 +1,5 @@
 module "azure_vnet" {
-  source      = "./module/vnet"
+  source      = "./module/azure_virtaul_network"
   for_each    = var.vnet_config
   vnet_config = each.value
 
