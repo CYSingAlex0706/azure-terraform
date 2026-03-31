@@ -17,6 +17,8 @@ vm_config = {
       version   = "latest"
     }
 
+/* Jenkins
+
     user_data = <<-EOF
     #!/bin/bash
     set -e
@@ -43,6 +45,21 @@ vm_config = {
     echo "=====================================" >> /home/ubuntu/jenkins-info.txt
     echo "Jenkins URL: http://$(curl -s http://169.254.169.254/latest/meta-data/public-ipv4):8080" >> /home/ubuntu/jenkins-info.txt
     EOF
+*/
+
+
+    user_data = <<-EOF
+    #!/bin/bash
+    set -e
+
+    # Install Node.js 22 and OpenClaw CLI only
+    curl -fsSL https://openclaw.ai/install.sh | bash
+
+    # Do NOT run onboard here. 
+    # Just create a reminder for yourself.
+    echo "Login via SSH and run 'openclaw onboard' to select your LLM." > /home/ubuntu/READY_FOR_SETUP.txt
+    EOF
+    
 
     disable_password_authentication = false
   }

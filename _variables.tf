@@ -29,11 +29,6 @@ variable "client_secret" {
   sensitive   = true
 }
 
-# variable "nsg_config" {    
-# }
-# variable "route_table_config" {    
-# }
-
 variable "vm_config" {
 }
 variable "subnet_config" {
