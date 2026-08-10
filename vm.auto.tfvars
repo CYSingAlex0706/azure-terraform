@@ -2,7 +2,10 @@ vm_config = {
   # Web服务器
   "web-vm" = {
     name = "web-server-01"
-    size = "Standard_B1ms"
+    # size = "Standard_B1ms"
+    size = "Standard_B2s"
+    
+    storage_account_type = "Standard_LRS"
 
     os_disk = {
       caching              = "ReadWrite"
@@ -12,8 +15,8 @@ vm_config = {
 
     image = {
       publisher = "Canonical"
-      offer     = "0001-com-ubuntu-server-focal"
-      sku       = "20_04-lts"
+      offer     = "ubuntu-24_04-lts"
+      sku       = "server"
       version   = "latest"
     }
 
