@@ -1,78 +1,78 @@
-vm_config = {
-  # Web服务器
-  "web-vm" = {
-    name = "web-server-01"
-    # size = "Standard_B1ms"
-    size = "Standard_B2s"
+# vm_config = {
+#   # Web服务器
+#   "web-vm" = {
+#     name = "web-server-01"
+#     # size = "Standard_B1ms"
+#     size = "Standard_B2s"
     
-    storage_account_type = "Standard_LRS"
+#     storage_account_type = "Standard_LRS"
 
-    os_disk = {
-      caching              = "ReadWrite"
-      storage_account_type = "Standard_LRS"
-      disk_size_gb         = 30
-    }
+#     os_disk = {
+#       caching              = "ReadWrite"
+#       storage_account_type = "Standard_LRS"
+#       disk_size_gb         = 30
+#     }
 
-    image = {
-      publisher = "Canonical"
-      offer     = "ubuntu-24_04-lts"
-      sku       = "server"
-      version   = "latest"
-    }
+#     image = {
+#       publisher = "Canonical"
+#       offer     = "ubuntu-24_04-lts"
+#       sku       = "server"
+#       version   = "latest"
+#     }
 
-/* Jenkins
+# /* Jenkins
 
-    user_data = <<-EOF
-    #!/bin/bash
-    set -e
+#     user_data = <<-EOF
+#     #!/bin/bash
+#     set -e
 
-    # Update system
-    apt-get update
-    apt-get install -y openjdk-21-jdk wget
+#     # Update system
+#     apt-get update
+#     apt-get install -y openjdk-21-jdk wget
 
-    # Install Jenkins
-    mkdir -p /etc/apt/keyrings
-    wget -O /etc/apt/keyrings/jenkins-keyring.asc https://pkg.jenkins.io/debian-stable/jenkins.io-2026.key
-    echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/" | tee /etc/apt/sources.list.d/jenkins.list
-    apt-get update
-    apt-get install -y jenkins
+#     # Install Jenkins
+#     mkdir -p /etc/apt/keyrings
+#     wget -O /etc/apt/keyrings/jenkins-keyring.asc https://pkg.jenkins.io/debian-stable/jenkins.io-2026.key
+#     echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/" | tee /etc/apt/sources.list.d/jenkins.list
+#     apt-get update
+#     apt-get install -y jenkins
 
-    # Start Jenkins
-    systemctl enable jenkins
-    systemctl start jenkins
+#     # Start Jenkins
+#     systemctl enable jenkins
+#     systemctl start jenkins
 
-    # Wait and save initial password
-    sleep 30
-    echo "=== Jenkins Initial Admin Password ===" > /home/ubuntu/jenkins-info.txt
-    cat /var/lib/jenkins/secrets/initialAdminPassword >> /home/ubuntu/jenkins-info.txt
-    echo "=====================================" >> /home/ubuntu/jenkins-info.txt
-    echo "Jenkins URL: http://$(curl -s http://169.254.169.254/latest/meta-data/public-ipv4):8080" >> /home/ubuntu/jenkins-info.txt
-    EOF
-*/
+#     # Wait and save initial password
+#     sleep 30
+#     echo "=== Jenkins Initial Admin Password ===" > /home/ubuntu/jenkins-info.txt
+#     cat /var/lib/jenkins/secrets/initialAdminPassword >> /home/ubuntu/jenkins-info.txt
+#     echo "=====================================" >> /home/ubuntu/jenkins-info.txt
+#     echo "Jenkins URL: http://$(curl -s http://169.254.169.254/latest/meta-data/public-ipv4):8080" >> /home/ubuntu/jenkins-info.txt
+#     EOF
+# */
 
 
-    user_data = <<-EOF
-    #!/bin/bash
-    set -e
+#     user_data = <<-EOF
+#     #!/bin/bash
+#     set -e
 
-    # Install Node.js 22 and OpenClaw CLI only
-    curl -fsSL https://openclaw.ai/install.sh | bash
+#     # Install Node.js 22 and OpenClaw CLI only
+#     curl -fsSL https://openclaw.ai/install.sh | bash
 
-    # Do NOT run onboard here. 
-    # Just create a reminder for yourself.
-    echo "Login via SSH and run 'openclaw onboard' to select your LLM." > /home/ubuntu/READY_FOR_SETUP.txt
-    EOF
+#     # Do NOT run onboard here. 
+#     # Just create a reminder for yourself.
+#     echo "Login via SSH and run 'openclaw onboard' to select your LLM." > /home/ubuntu/READY_FOR_SETUP.txt
+#     EOF
     
 
-    disable_password_authentication = false
-  }
-}
+#     disable_password_authentication = false
+#   }
+# }
 
-ip_configs = {
-  "web-vm-pip" = {
-    name              = "web-vm-public-ip"
-    allocation_method = "Static"
-    sku               = "Standard"
-  }
-  # 可以为每个 VM 定义不同的公共 IP 配置
-}
+# ip_configs = {
+#   "web-vm-pip" = {
+#     name              = "web-vm-public-ip"
+#     allocation_method = "Static"
+#     sku               = "Standard"
+#   }
+#   # 可以为每个 VM 定义不同的公共 IP 配置
+# }

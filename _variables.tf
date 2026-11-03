@@ -29,19 +29,22 @@ variable "client_secret" {
   sensitive   = true
 }
 
-variable "vm_config" {
-}
+# variable "vm_config" {
+# }
 variable "subnet_config" {
 }
 variable "vnet_config" {
 }
 
-variable "ip_configs" {
-}
+# variable "ip_configs" {
+# }
 
 variable "admin_username" {
   sensitive = true
 }
 variable "admin_password" {
   sensitive = true
+}
+
+variable "aks_config" {
 }

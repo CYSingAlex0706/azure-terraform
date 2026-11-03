@@ -16,7 +16,7 @@ module "azure_subnet" {
   nsg_config         = lookup(each.value, "nsg_config", null)
   route_table_config = lookup(each.value, "route_table_config", null)
 
-  resource_group_name  = var.resource_group_name
+  resource_group_name  = module.resource_group.resource_group_name
   virtual_network_name = module.azure_vnet["vpc-01"].vnet_name
   location             = var.location
 }

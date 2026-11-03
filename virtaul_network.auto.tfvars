@@ -1,14 +1,14 @@
 vnet_config = {
   "vpc-01" = {
-    name          = "testing-vnet"
-    address_space = ["10.0.0.0/16"]
+    name          = "testing-aks-vnet"
+    address_space = ["10.1.0.0/16"]
   }
 }
 
 subnet_config = {
   "subnet-01" = {
     name = "subnet-01"
-    cidr = ["10.0.1.0/24"]
+    cidr = ["10.1.1.0/24"]
     
     nsg_config = {
       name = "subnet01-nsg"
@@ -51,15 +51,15 @@ subnet_config = {
           name           = "to-peered-vnet"
           address_prefix = "10.1.0.0/16"
           next_hop_type  = "VirtualAppliance"
-          next_hop_in_ip_address = "10.0.100.4"
+          next_hop_in_ip_address = "10.1.100.4"
         }
       }
     }
   }
   
-  "subnet-02" = {
-    name = "subnet-02"
-    cidr = ["10.0.2.0/24"]
+  "aks-subnet" = {
+    name = "aks-subnet"
+    cidr = ["10.1.2.0/24"]
     
     nsg_config = {
       name = "subnet02-nsg"
@@ -91,27 +91,27 @@ subnet_config = {
     # 没有route_table_config，表示不创建路由表
   }
   
-  "subnet-03" = {
-    name = "subnet-03"
-    cidr = ["10.0.3.0/24"]
-    # 既没有nsg_config也没有route_table_config，只创建子网
-  }
+  # "subnet-03" = {
+  #   name = "subnet-03"
+  #   cidr = ["10.1.3.0/24"]
+  #   # 既没有nsg_config也没有route_table_config，只创建子网
+  # }
   
-  "subnet-04" = {
-    name = "subnet-04"
-    cidr = ["10.0.4.0/24"]
+  # "subnet-04" = {
+  #   name = "subnet-04"
+  #   cidr = ["10.1.4.0/24"]
     
-    route_table_config = {
-      name = "subnet04-rt"
-      routes = {
-        "firewall" = {
-          name           = "to-firewall"
-          address_prefix = "0.0.0.0/0"
-          next_hop_type  = "VirtualAppliance"
-          next_hop_in_ip_address = "10.0.100.4"
-        }
-      }
-    }
-    # 没有nsg_config，表示不创建NSG
-  }
+  #   route_table_config = {
+  #     name = "subnet04-rt"
+  #     routes = {
+  #       "firewall" = {
+  #         name           = "to-firewall"
+  #         address_prefix = "0.0.0.0/0"
+  #         next_hop_type  = "VirtualAppliance"
+  #         next_hop_in_ip_address = "10.1.100.4"
+  #       }
+  #     }
+  #   }
+  #   # 没有nsg_config，表示不创建NSG
+  # }
 }
