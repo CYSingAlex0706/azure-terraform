@@ -53,3 +53,18 @@ variable "aks_config" {
 #   description = "Storage account configuration object"
 #   type        = any
 # }
+
+variable "sql_config" {
+  description = "Azure SQL configuration map"
+  type        = any
+}
+
+variable "administrator_login" {
+  description = "Azure SQL configuration map"
+  type        = any
+}
+
+variable "administrator_login_password" {
+  description = "Azure SQL configuration map"
+  type        = any
+}

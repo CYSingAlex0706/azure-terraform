@@ -7,6 +7,7 @@ aks_config = {
     identity_type     = "SystemAssigned"
     subnet_key        = "aks-subnet"
     enable_azure_rbac = false
+    oidc_issuer_enabled = true
 
     default_node_pool = {
       name                = "system"

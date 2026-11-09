@@ -5,6 +5,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
   dns_prefix          = var.aks_config.dns_prefix
   kubernetes_version        = try(var.aks_config.kubernetes_version, null)
   sku_tier            = try(var.aks_config.sku_tier, "Free")
+  oidc_issuer_enabled  = var.aks_config.oidc_issuer_enabled
   
   
   
