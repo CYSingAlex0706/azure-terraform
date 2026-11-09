@@ -48,3 +48,8 @@ variable "admin_password" {
 
 variable "aks_config" {
 }
+
+# variable "storage_config" {
+#   description = "Storage account configuration object"
+#   type        = any
+# }
